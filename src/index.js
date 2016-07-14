@@ -31,7 +31,7 @@ function ensureAuthenticated(nextState, replaceState) {
   const user = store.getState().user;
   if (!user.loggedIn) {
     store.dispatch(setNextPathname(nextState.location.pathname));
-    replaceState({}, '/signin');
+    replaceState({}, '/authorization');
   }
 }
 

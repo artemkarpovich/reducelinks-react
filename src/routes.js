@@ -6,12 +6,13 @@ import SignIn from './containers/SignIn';
 import SignUp from './containers/SignUp';
 import LinkInfo from './containers/LinkInfo';
 import LinksForTag from './containers/LinksForTag';
+import Authorization from './containers/Authorization';
 
 export default function(ensureAuthenticated) {
   return (
     <Route>
-      <Route path="signin" component={SignIn} />
       <Route path="signup" component={SignUp} />
+      <Route path="authorization" component={Authorization}/>
 
       <Route path="/" component={App} onEnter={ensureAuthenticated}>
         <IndexRedirect to="index" />

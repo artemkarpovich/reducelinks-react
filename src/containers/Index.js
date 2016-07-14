@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { push } from 'react-router-redux';
 import { sendLinkInfo, addLinkInfo } from '../actions/link';
 
 const propTypes = {
@@ -34,18 +35,23 @@ class Index extends Component {
 
   sendLinkInfoHandler(e) {
     const { initialLink, description, tags } = this.state;
+    const name = this.props.user.name ? this.props.user.name : undefined;
 
     e.preventDefault();
 
-    this.props.actions.sendLinkInfo(initialLink, description, tags)
-      .then((action) => {
-        this.setState({
-          initialLink: '',
-          description: '',
-          tags: ''
-        });
-        this.props.actions.addLinkInfo(action.payload.link);
-      })
+    if (name) {
+      this.props.actions.sendLinkInfo(initialLink, description, tags)
+        .then((action) => {
+          this.setState({
+            initialLink: '',
+            description: '',
+            tags: ''
+          });
+          this.props.actions.addLinkInfo(action.payload.link);
+        })
+    } else {
+      this.props.actions.push('/authorization');
+    }
   }
 
   render() {
@@ -85,10 +91,12 @@ class Index extends Component {
 Index.propTypes = propTypes;
 
 export default connect(state => ({
-  link: state.link
+  link: state.link,
+  user: state.user,
 }), dispatch => ({
   actions: bindActionCreators({
     sendLinkInfo,
-    addLinkInfo
+    addLinkInfo,
+    push,
   }, dispatch)
 }))(Index);

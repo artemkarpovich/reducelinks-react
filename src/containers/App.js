@@ -18,16 +18,21 @@ class App extends Component {
 
   logoutHandler() {
     this.props.actions.logout();
-    this.props.actions.push('/signin'); 
+    this.props.actions.push('/index');
   }
 
   render() {
-    const name = this.props.user.name;
+    const name = this.props.user.name ? this.props.user.name : undefined;
     return (
       <div>
         <h1>REDUCE LINKS</h1>
-        <button onClick={ this.logoutHandler }>logout</button>
-        <Link to="/links-info">{name}</Link>
+        {
+          name ?
+            <div>
+              <button onClick={ this.logoutHandler }>logout</button>
+              <Link to="/links-info">{name}</Link>
+            </div> : ''
+        }
         { this.props.children }
       </div>
     );
