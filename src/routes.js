@@ -4,6 +4,7 @@ import App from './containers/App';
 import Index from './containers/Index';
 import SignIn from './containers/SignIn';
 import SignUp from './containers/SignUp';
+import LinkInfo from './containers/LinkInfo';
 
 export default function(ensureAuthenticated) {
   return (
@@ -15,6 +16,7 @@ export default function(ensureAuthenticated) {
         <IndexRedirect to="index" />
 
         <Route path="index" component={Index} />
+        <Route path="links-info" component={LinkInfo} />
       </Route>
     </Route>
   );
