@@ -5,6 +5,7 @@ import Index from './containers/Index';
 import SignIn from './containers/SignIn';
 import SignUp from './containers/SignUp';
 import LinkInfo from './containers/LinkInfo';
+import LinksForTag from './containers/LinksForTag';
 
 export default function(ensureAuthenticated) {
   return (
@@ -17,6 +18,8 @@ export default function(ensureAuthenticated) {
 
         <Route path="index" component={Index} />
         <Route path="links-info" component={LinkInfo} />
+        <Route path="tags/:tag" component={LinksForTag} />
+        
       </Route>
     </Route>
   );

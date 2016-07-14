@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router';
 import { getLinksInfo } from '../actions/link';
 
 const propTypes = {
@@ -42,16 +43,15 @@ class LinkInfo extends Component {
                 <td>
                   {
                     link.tags ?
-                      link.tags.map((tag, index) =>
-                        <a key={index} href={`http://localhost:3000/tags/${tag}`}>
+                      link.tags.map((tag, tagIndex) =>
+                        <Link to={`/tags/${tag}`} key={tagIndex}>
                           #{tag}
-                        </a>
+                        </Link>
                       ) :
                       'No tags'
                   }
                 </td>
               </tr>
-
               )
             }
           </tbody>

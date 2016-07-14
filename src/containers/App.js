@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { push } from 'react-router-redux';
+import { Link } from 'react-router';
 import { logout } from '../actions/user';
 
 const propTypes = {
@@ -21,10 +22,12 @@ class App extends Component {
   }
 
   render() {
+    const name = this.props.user.name;
     return (
       <div>
         <h1>REDUCE LINKS</h1>
         <button onClick={ this.logoutHandler }>logout</button>
+        <Link to="/links-info">{name}</Link>
         { this.props.children }
       </div>
     );
@@ -33,7 +36,9 @@ class App extends Component {
 
 App.propTypes = propTypes;
 
-export default connect(state => ({}), dispatch => ({
+export default connect(state => ({
+  user: state.user,
+}), dispatch => ({
   actions: bindActionCreators({
     logout,
     push

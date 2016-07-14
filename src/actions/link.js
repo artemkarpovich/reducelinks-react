@@ -3,6 +3,7 @@ import { createAction } from 'redux-actions';
 export const SEND_LINK_INFO = 'SEND_LINK_INFO';
 export const ADD_LINK_INFO = 'ADD_LINK_INFO';
 export const GET_LINKS_INFO = 'GET_LINKS_INFO';
+export const GET_LINKS_BY_TAG = 'GET_LINKS_BY_TAG';
 
 export const addLinkInfo = createAction(ADD_LINK_INFO);
 
@@ -27,6 +28,16 @@ export function getLinksInfo() {
     payload: {
       url: '/api/links',
       method: 'get'
+    }
+  };
+}
+
+export function getLinksByTag(tag) {
+  return {
+    type: GET_LINKS_BY_TAG,
+    payload: {
+      url: `/tags/${tag}`,
+      method: 'get',
     }
   };
 }
