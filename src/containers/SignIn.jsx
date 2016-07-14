@@ -47,7 +47,7 @@ class SignIn extends Component {
 
     return (
       <form onSubmit={this.signInHandler}>
-        <h1>Войти</h1>
+        <h1>Войдите или Зарегистрируйтесь</h1>
         <div>
           <input
             type="text"
