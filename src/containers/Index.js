@@ -8,6 +8,7 @@ const propTypes = {
   actions: PropTypes.shape({
     sendLinkInfo: PropTypes.func,
     addLinkInfo: PropTypes.func,
+    push: PropTypes.func
   })
 };
 
@@ -56,7 +57,8 @@ class Index extends Component {
 
   render() {
     const { initialLink, description, tags } = this.state;
-    const link = this.props.link;
+    const { link }  = this.props;
+
     return (
       <div>
         <form onSubmit={this.sendLinkInfoHandler}>

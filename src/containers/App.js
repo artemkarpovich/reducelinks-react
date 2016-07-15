@@ -29,8 +29,9 @@ class App extends Component {
         {
           name ?
             <div>
-              <button onClick={ this.logoutHandler }>logout</button>
               <Link to="/links-info">{name}</Link>
+              <Link to="/index">index</Link>
+              <button onClick={ this.logoutHandler }>logout</button>
             </div> : ''
         }
         { this.props.children }
