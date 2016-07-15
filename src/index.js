@@ -9,6 +9,7 @@ import routes from './routes';
 import reducers from './reducers';
 import api from './middlewares/api';
 import { setNextPathname } from './actions/user';
+import './styles/main.scss';
 
 const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : {};
 
