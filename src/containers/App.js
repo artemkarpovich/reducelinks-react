@@ -30,7 +30,7 @@ class App extends Component {
           name ?
             <div>
               <Link to="/links-info">{name}</Link>
-              <Link to="/index">index</Link>
+              <Link to="/index">Main</Link>
               <button onClick={ this.logoutHandler }>logout</button>
             </div> : ''
         }
